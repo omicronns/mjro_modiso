@@ -6,9 +6,11 @@ pacman-key --populate
 yes | pacman -Sy yay base-devel
 
 sed -i -e 's/# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/%wheel ALL=(ALL:ALL) NOPASSWD: ALL/g' /etc/sudoers
-useradd -m -G wheel -s /bin/bash god
+useradd -m -G wheel -s /bin/bash aur
 
-yes | sudo -u god yay -S ncurses5-compat-libs
+yes | sudo -u aur yay -S ncurses5-compat-libs
+
+systemctl enable startup
 
 rm -rf /var/cache/pacman/pkg/*
-rm -rf /home/god/.cache/*
+rm -rf /home/aur/.cache/*

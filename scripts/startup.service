@@ -1,0 +1,11 @@
+[Unit]
+Description=Startup tasks
+
+[Service]
+Type=oneshot
+ExecStart=/startup.sh
+RemainAfterExit=true
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target
