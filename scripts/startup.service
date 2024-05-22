@@ -1,5 +1,6 @@
 [Unit]
 Description=Startup tasks
+After=multi-user.target
 
 [Service]
 Type=oneshot
