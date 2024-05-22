@@ -1,0 +1,3 @@
+from mjro_temp:base
+
+run ./mod.sh
