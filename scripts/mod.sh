@@ -3,7 +3,7 @@
 pacman-key --init
 pacman-key --populate
 
-yes | pacman -Sy yay base-devel
+yes | pacman -Sy yay base-devel linux69-headers
 
 sed -i -e 's/# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/%wheel ALL=(ALL:ALL) NOPASSWD: ALL/g' /etc/sudoers
 useradd -m -G wheel -s /bin/bash aur

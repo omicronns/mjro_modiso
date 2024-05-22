@@ -15,6 +15,10 @@ sed -i -e 's/quiet systemd.show_status=1 splash//g' $workdir/boot/grub/kernels.c
 unsquashfs $workdir/manjaro/x86_64/rootfs.sfs
 cp scripts/mod.sh scripts/startup.sh squashfs-root
 cp scripts/startup.service squashfs-root/lib/systemd/system
+mkdir -p squashfs-root/etc/ssh
+ssh-keygen -f squashfs-root/etc/ssh/ssh_host_rsa_key -N '' -t rsa
+ssh-keygen -f squashfs-root/etc/ssh/ssh_host_ecdsa_key -N '' -t ecdsa
+ssh-keygen -f squashfs-root/etc/ssh/ssh_host_ed25519_key -N '' -t ed25519
 bsdtar -C squashfs-root -c . | docker import - mjro_temp:base
 docker buildx build -o rootfs docker
 mksquashfs rootfs rootfs.sfs
